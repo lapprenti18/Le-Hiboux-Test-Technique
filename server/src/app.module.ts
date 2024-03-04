@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { config } from 'dotenv';
+import { CardModule } from './card/card.module';
 
 config();
 
@@ -19,6 +20,7 @@ config();
       synchronize: true,
       autoLoadEntities: true,
     }),
+    CardModule,
   ],
   controllers: [AppController],
   providers: [AppService],
