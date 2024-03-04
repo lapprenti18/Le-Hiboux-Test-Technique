@@ -2,20 +2,24 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { config } from 'dotenv';
 import { CardModule } from './card/card.module';
+import { ConfigModule } from '@nestjs/config';
+import configuration from './config/configuration';
 
-config();
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configuration],
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
+      host: configuration().database.host,
+      port: configuration().database.port,
+      username: configuration().database.username,
+      password: configuration().database.password,
+      database: configuration().database.database,
       entities: [],
       synchronize: true,
       autoLoadEntities: true,
