@@ -1,6 +1,17 @@
 version: '3.5'
 
 services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    volumes:
+      - /var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    env_file:
+      - ./rabbitmq.env
+ 
   db:
     image: postgres
     restart: always
@@ -23,6 +34,7 @@ services:
       - '3000:3000'
     depends_on:
       - db
+      - rabbitmq
     volumes:
       - ./server/src:/app/src
 
