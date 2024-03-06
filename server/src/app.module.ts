@@ -6,6 +6,7 @@ import { CardModule } from './card/card.module';
 import { ConfigModule } from '@nestjs/config';
 import configuration from './config/configuration';
 import { MailModule } from './mail/mail.module';
+import { QueueModule } from './queues/module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { MailModule } from './mail/mail.module';
       synchronize: true,
       autoLoadEntities: true,
     }),
+    QueueModule,
     CardModule,
     MailModule,
   ],
