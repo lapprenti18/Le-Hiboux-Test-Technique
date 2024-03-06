@@ -17,6 +17,8 @@ export class CardService {
     const card = new Card();
     card.title = createCardDto.title;
     card.description = createCardDto.description;
+    if (createCardDto.status)
+      card.status = createCardDto.status;
     await this.producerService.addToEmailQueue(card);
     return this.cardRepository.save(card);
   }
@@ -35,6 +37,7 @@ export class CardService {
     const card = await this.findOne(id);
     card.title = updateCardDto.title || card.title;
     card.description = updateCardDto.description || card.description;
+    card.status = updateCardDto.status || card.status;
     return this.cardRepository.save(card);
   }
 

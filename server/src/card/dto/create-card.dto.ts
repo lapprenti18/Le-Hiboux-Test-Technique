@@ -1,8 +1,11 @@
 import {
+  IsEnum,
   IsNotEmpty,
+  IsOptional,
   IsString,
   MinLength,
 } from 'class-validator';
+import { StatusEnum } from '../entities/card.entity';
 
 export class CreateCardDto {
   @IsString()
@@ -14,4 +17,8 @@ export class CreateCardDto {
   @MinLength(2, { message: 'Description must have atleast 2 characters.' })
   @IsNotEmpty()
   description: string;
+
+  @IsEnum(StatusEnum, { message: 'Invalid status.' })
+  @IsOptional()
+  status?: StatusEnum;
 }

@@ -1,5 +1,11 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+export enum StatusEnum {
+  TODO = '1',
+  DOING = '2',
+  DONE = '3',
+}
+
 @Entity()
 export class Card {
   @PrimaryGeneratedColumn()
@@ -10,4 +16,8 @@ export class Card {
 
   @Column({ type: 'varchar' })
   description: string;
+
+  @Column({ type: 'enum', enum: StatusEnum, default: StatusEnum.TODO})
+  status: string;
+
 }
