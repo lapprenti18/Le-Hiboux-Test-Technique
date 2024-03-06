@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CardModule } from './card/card.module';
 import { ConfigModule } from '@nestjs/config';
 import configuration from './config/configuration';
-
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -25,6 +25,7 @@ import configuration from './config/configuration';
       autoLoadEntities: true,
     }),
     CardModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],
