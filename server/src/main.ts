@@ -11,7 +11,7 @@ async function bootstrap() {
   const host = configuration().rabbitmq.host;
   const queueName = configuration().rabbitmq.queueName;
 
-  await app.connectMicroservice<MicroserviceOptions>({
+  app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ,
     options: {
       urls: [`amqp://${user}:${password}@${host}`],
@@ -21,7 +21,7 @@ async function bootstrap() {
       },
     },
   });
-  
+
   app.startAllMicroservices();
   app.listen(3000);
 }
