@@ -21,6 +21,13 @@ import { join } from 'path';
       defaults: {
         from: configuration().mail.user,
       },
+      template: {
+        dir: join(__dirname, 'templates'),
+        adapter: new HandlebarsAdapter(),
+        options: {
+          strict: true,
+        },
+      },
     }),
   ],
   providers: [MailService],

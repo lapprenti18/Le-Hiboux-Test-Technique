@@ -10,6 +10,7 @@ export class MailService {
       const mailContent = {
         to: "pokspid@gmail.com",
         subject: 'New card created',
+        template: './createCard',
         context: {},
       }
 
