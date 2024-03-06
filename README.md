@@ -27,16 +27,22 @@ Before launching the project, you need to create three env files:
 
 3. **server/.env**: Configure the server with database and RabbitMQ details:
     ```
-    DB_HOST=db
-    DB_PORT=5432
-    DB_USERNAME=postgres
-    DB_PASSWORD=postgres
-    DB_DATABASE=postgres
+    DB_HOST='db'
+    DB_PORT='5432'
+    DB_USERNAME='postgres'
+    DB_PASSWORD='postgres'
+    DB_DATABASE='postgres'
 
-    RABBITMQ_USER=admin
-    RABBITMQ_PASSWORD=admin
-    RABBITMQ_HOST=localhost:5672
-    RABBITMQ_QUEUE_NAME=card-queue
+    RABBITMQ_USER='admin'
+    RABBITMQ_PASSWORD='admin'
+    RABBITMQ_HOST='rabbitmq'
+    RABBITMQ_QUEUE_NAME='card-queue'
+
+    MAIL_HOST='smtp.gmail.com'
+    MAIL_USER='' an email address
+    MAIL_PASS='' the email password
+    MAIL_FROM='' the email from
+    MAIL_PORT='app'
     ```
 
 Feel free to adjust the values of these variables as needed.
