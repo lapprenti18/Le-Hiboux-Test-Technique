@@ -13,4 +13,11 @@ export default () => ({
     host: process.env.RABBITMQ_HOST,
     queueName: process.env.RABBITMQ_QUEUE_NAME,
   },
+  mail: {
+    host: process.env.MAIL_HOST,
+    user: process.env.MAIL_USER,
+    password: process.env.MAIL_PASS,
+    from: process.env.MAIL_FROM,
+    port: parseInt(process.env.MAIL_PORT),
+  },
 });
