@@ -4,19 +4,22 @@ import { UpdateCardDto } from './dto/update-card.dto';
 import { Card } from './entities/card.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { MailService } from 'src/mail/mail.service';
 
 @Injectable()
 export class CardService {
   constructor(
     @InjectRepository(Card) private readonly cardRepository: Repository<Card>,
+    private mailService: MailService,
   ) {}
 
-  create(createCardDto: CreateCardDto): Promise<Card> {
+  async create(createCardDto: CreateCardDto): Promise<Card> {
     const card = new Card();
     card.title = createCardDto.title;
     card.description = createCardDto.description;
-    return this.cardRepository.save(card);
+    await this.mailService.sendCardCreation();
 
+    return this.cardRepository.save(card);
   }
 
   findAll() {
